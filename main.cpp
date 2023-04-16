@@ -4,6 +4,7 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include "game1.h"
 
 using namespace std;
 void print_loading(string game_name) {
@@ -27,12 +28,12 @@ int main() {
     string player_name;
     cout << "Enter your name: ";
     getline(cin, player_name);
-    int player_points = 100;
+    int player_points = 10000;
     cout << "Welcome, " << player_name << "! You have " << player_points << " points." << endl;
     cout << "Press Enter to spin the wheel...";
     cin.ignore();
     srand(time(NULL));
-    vector<string> colors = {"game1", "game2", "game3", "Sweet spin", "Jackpot", "Zonk"};
+    vector<string> colors = {"game1", "game2", "game3", "extra life", "poison"};
     int index = rand() % colors.size();
     string selected_color = colors[index];
     int box_width = 40;
@@ -101,7 +102,7 @@ if (selected_color == "Zonk") {
     print_loading("game3");
 } else if (selected_color == "game1"){
     print_loading("game1");
+    player_points - = game1();
 }
-
-    return 0;
+return 0;
 }
